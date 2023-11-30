@@ -1,0 +1,1113 @@
+<!DOCTYPE html>
+<html lang="ko" class="">
+
+<head>
+	<title>[##_page_title_##] :: [##_title_##]</title>
+
+	<meta name="title" content="[##_page_title_##] :: [##_title_##]" />
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	<!-- darkmode NO -->
+	<meta name="color-scheme" content="light only"/>
+	<meta name="supported-color-schemes" content="light"/>
+
+	<link rel="stylesheet" href="./style.css" />
+
+	<!-- 부트스트랩 -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+	<!-- 구글 폰트 -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Dancing+Script:wght@400;500;600;700&family=Dongle:wght@300;400;700&family=Gugi&family=Karla:wght@200;300;400;500;600;700;800&family=Katibeh&family=Noto+Sans+KR:wght@100;200;300;400;500;600;700;800;900&family=Pacifico&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+	<!-- 수식 쓸 수 있도록 ($$ [수식] $$) -->
+	<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+	<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body id="[##_body_id_##]">
+
+	<s_t3>
+		<div class="wrapper">
+
+			<!-- 사이드바 -->
+			<div id="sidebar">
+				<div class="menu_close_btn">
+					<img width="64" height="64" src="https://img.icons8.com/sf-black-filled/64/x.png" alt="x" onclick="menu_close_click()"/>
+					<!-- func description under -->
+				</div>
+
+				<div class="profile">
+					<div class="profile_pic">
+						<img src="./images/me.png" alt="It's me">
+					</div>
+					<p>Sun Hong</p>
+				</div>
+
+				<div class="contact sidebar_box">
+					<p>Contact Me</p>
+					<div class="mail contact_box">		<img src="./images/icon_mail.png" 		alt="Mail">			<a href="matilto:32182479@dankook.ac.kr">32182479@dankook.ac.kr</a></div>
+					<div class="linkedin contact_box">	<img src="./images/icon_linkedin.png" 	alt="Linked In">	<a href="https://www.linkedin.com/in/sunhong-an/">Linked In</a></div>
+					<div class="notion contact_box">	<img src="./images/icon_notion.png" 	alt="Noyion">		<a href="https://www.notion.so/Sun-Hong-78ee5a443bfd49aab679d33f8c0697ef?pvs=4/">Portfolio</a></div>
+					<div class="github contact_box">	<img src="./images/icon_github.gif" 	alt="Github">		<a href="https://github.com/radic2682">Github</a></div>
+				</div>
+
+				<s_sidebar_element>
+					<div id="category" class="sidebar_box">
+						<p>[##_category_list_##]</p>
+					</div>
+				</s_sidebar_element>
+				<script> // 카테고리 괄호 제거
+					const categoryCount = document.querySelectorAll('#category .c_cnt');
+					for (i = 0; i < categoryCount.length; i++) {
+						let pattern = /[()]/gi;
+						let str = categoryCount[i].innerHTML;
+						let n = str.replace(pattern, '');
+						categoryCount[i].innerHTML = n;
+					}
+				</script>
+
+				<div class="count sidebar_box">
+					<p>Count</p>
+					<s_sidebar_element>
+						<div class="count_ele"><p>Total</p><p class="total">[##_count_total_##]</p></div>
+						<div class="count_ele"><p>Today</p><p class="today">[##_count_today_##]</p></div>
+						<div class="count_ele"><p>Yesterday</p><p class="yesterday">[##_count_yesterday_##]</p></div>
+					</s_sidebar_element>
+				</div>
+
+				<div class="write_set sidebar_box">
+					<!-- <p>Menu</p> -->
+					<div class="write_set_ele">
+						<a href="https://sunhong-dev.tistory.com/manage/entry/post">
+							<img src="./images/icon_write.png" alt="Post">
+						</a>
+						<a href="https://sunhong-dev.tistory.com/manage">
+							<img src="./images/icon_set.png" alt="Set">
+						</a>
+						<a href="/guestbook">
+							<img src="./images/logo_dragon_64x64.png" alt="Dragon">
+						</a>
+					</div>
+				</div>
+
+				<div class="log_InOut sidebar_box">
+					<a class="tab_login" href="#" id="tab_login_toggle" onclick="fnLoginToggle();"></a>
+				</div>
+				<script>
+					function fnLoginToggle() {}
+
+					document.addEventListener("DOMContentLoaded", function () {
+						if (window.T.config.USER.name) {
+							document.getElementById('tab_login_toggle').innerText = '로그아웃';
+							fnLoginToggle = function () {
+								document.location.href = "https://www.tistory.com/auth/logout?redirectUrl=" + encodeURIComponent(window.location.href);
+							};
+						} else {
+							document.getElementById('tab_login_toggle').innerText = '로그인';
+							fnLoginToggle = function () {
+								document.location.href = "https://www.tistory.com/auth/login?redirectUrl=" + encodeURIComponent(window.location.href);
+							};
+						}
+					});
+				</script>
+				
+
+			</div>
+
+
+			<button id="sidebar_on_off_btn">
+				<img width="64" height="64" src="./images/icon_menu.png" alt="menu" onclick="menu_tag_click()"/>
+				<!-- <img src="./images/menu_tag.png" alt="menu" onclick="menu_tag_click()"> -->
+			</button>
+			<script>
+				const sidebar = document.querySelector('#sidebar');
+				const sidebar_on_off_btn = document.querySelector('#sidebar_on_off_btn');
+
+				function menu_close_click(){
+					// sidebar.style.display = "none";
+					sidebar.style.marginLeft = "-280px";
+					sidebar_on_off_btn.style.marginLeft = "20px";
+				}
+
+				function menu_tag_click(){
+					sidebar.style.marginLeft = "0";
+					sidebar_on_off_btn.style.marginLeft = "-140px";
+				}
+			</script>
+
+
+			<div id="subscription">
+				<img class="x" width="64" height="64" src="https://img.icons8.com/sf-black-filled/64/x.png" alt="x" onclick="del_sub()"/>
+				<img src="./images/icon_bell.gif" alt="bell">
+				<p>구독 해주세요!</p>
+				<button type="button" class="btn_menu_toolbar btn_subscription  #subscribe" data-blog-id="6692715" data-url="https://sunhong-dev.tistory.com/" data-device="web_pc">멋진 포스팅 구독하기</button>
+			</div>
+			<script>
+				const subscription = document.querySelector('#subscription');
+
+				function del_sub(){
+					subscription.style.marginRight = "-380px";
+				}
+
+				setTimeout(() => { 
+					subscription.style.marginRight = "0";
+					setTimeout(() => { 
+						subscription.style.marginRight = "-380px";
+						
+					}, 4000);
+				}, 3500);
+			</script>
+
+
+			<div id="searching">
+				<div class="background"></div>
+				<div class="content">
+
+					<div class="searching_close_btn">
+						<img width="64" height="64" src="https://img.icons8.com/sf-black-filled/64/x.png" alt="x" onclick="searching_close()"/>
+					</div>
+
+					<img width="96" height="96" src="./images/icon_searching.gif" alt="search--v1"/>
+
+					<div class="search_box">
+						<s_search>
+							<input class="text_blank" type="text" name="[##_search_name_##]" value="[##_search_text_##]" onkeypress="if (event.keyCode == 13) { [##_search_onclick_submit_##] }" />
+							<input value="검색" type="button" onclick="[##_search_onclick_submit_##]" class="submit" />
+						</s_search>
+					</div>
+
+				</div>
+		
+			</div>
+			<script>
+				const searching = document.querySelector('#searching');
+
+				function searching_show() {
+					searching.style.display = "block";
+				}
+				function searching_close() {
+					searching.style.display = "none";
+				}
+			</script>
+
+
+			<!-- ************************************************************************************************ [ Begin ] -->
+			<!-- 
+				콘텐츠들
+			-->
+			<div id="content">
+
+				<!-- 상단 스크롤바 -->
+				<div id="scoll_bar"></div>
+				<script>
+					const scoll_bar = document.querySelector('#scoll_bar');
+					
+					window.addEventListener("scroll", () => {
+						let fullHeight = document.body.scrollHeight - window.innerHeight;
+						let scroll = pageYOffset;
+						let progress = (scroll/fullHeight)*100;
+
+						scoll_bar.style.width = progress + '%';
+					})
+				</script>
+
+
+				<!-- ------------------------------------------------- [ Begin ] -->
+				<!-- 상단 nav bar (무조건 표시) -->
+				<div id="top_nav_bar">
+					<a href="[##_blog_link_##]">
+						<img src="./images/logoB.png" alt="Home" class="logo">
+					</a>
+					<div class="empty"></div>
+					<!-- <a href="[##_blog_link_##]" class="top_blog_name">[##_title_##]</a> -->
+					<a href="#">
+						<img id="top_search" src="./images/icon_search_l.png" alt="Search" onclick="searching_show()">
+					</a>
+				</div>
+				<script>
+					const body = document.querySelector('body');
+					const logo = document.querySelector('.logo');
+					const top_search = document.querySelector('#top_search');
+					if((body.id === "tt-body-category") || (body.id === "tt-body-page") || (body.id === "tt-body-search") || (body.id === "tt-body-tag")) {
+					// if(true) {
+						logo.src = "./images/logoB_y.png";
+						top_search.src = "./images/icon_search_l_y.png";
+					}
+					window.addEventListener("scroll", () => {
+						if((body.id === "tt-body-category") || (body.id === "tt-body-page") || (body.id === "tt-body-search") || (body.id === "tt-body-tag")) {
+						// if(true) {
+							if(window.scrollY < 200) {
+								// console.log(window.scrollY);
+								logo.src = "./images/logoB_y.png";
+								top_search.src = "./images/icon_search_l_y.png";
+							} else {
+								logo.src = "./images/logoB.png";
+								top_search.src = "./images/icon_search_l.png";
+							}
+						}
+					})
+				</script>
+				<!-- ------------------------------------------------- [  End  ] -->
+
+				
+				<!-- 하단 이동버튼 -->
+				<div id="btn_s">
+					<!-- <div class="btn_to_top">
+						<a>
+							<img width="96" height="96" src="https://img.icons8.com/retro/96/rocket.png" alt="rocket" onclick="go_top()">
+						</a>
+					</div> -->
+					<!-- <div class="home">
+						<a href="[##_blog_link_##]">
+							<img width="100" height="100" src="https://img.icons8.com/bubbles/100/home.png" alt="home"/>
+						</a>
+					</div> -->
+				</div>
+				<script>
+					function go_top() {
+						window.scrollTo({top:0, left:0, behavior:'smooth'});
+					}
+				</script>
+
+
+
+
+				<!-- ------------------------------------------------- [ Begin ] -->
+				<!-- 메인 페이지 -->
+				<div id="main_page" >
+					<div class="main_top">
+
+						<div class="main_img">
+							<div class="cloud"></div>
+						</div>
+						<script>
+							function randomText(){
+								const text = ["H", "L", "L", "E", "O"];
+								return text[Math.floor(Math.random() * text.length)];
+							}
+							function rain(){
+								const cloud = document.querySelector('.cloud');
+								const e = document.createElement('div');
+								let left = Math.floor(Math.random() * 230);
+								let size = Math.random() * 1.3;
+								let duration = Math.random() * 1;
+
+								e.classList.add('text');
+								cloud.appendChild(e);
+								e.innerText = randomText();
+								e.style.left = 20 + left + 'px';
+								e.style.fontSize = 0.5 + size + 'em';
+								e.style.animationDuration = 2 + duration + 's';
+
+								setTimeout(() => {
+									cloud.removeChild(e);
+								}, 2000);
+							}
+							setInterval(() => {
+								rain();
+							}, 80)
+						</script>
+
+						<div class="description">
+							<h1 class="wave_welcome">Welcome to my Blog</h1>
+							<p>From hardware to software,</p>
+							<p>I'm <span class="emp_word">System Engineer</span></p>
+						</div>
+						<script>
+							let wordIndex = 0;
+							let charIndex = 0;
+							let isDeleting = false;
+							
+							function typeEffect(){
+								const words = ["System Engineer.", "Developer.", "Designer."];
+								const word = document.querySelector('.emp_word');
+								const currentWord = words[wordIndex];
+
+								word.textContent =currentWord.substring(0, charIndex);
+
+								if(!isDeleting && charIndex < currentWord.length) {
+									charIndex++;
+									setTimeout(typeEffect, 130);
+								} else if(isDeleting && charIndex >0){
+									charIndex--;
+									setTimeout(typeEffect, 30);
+								} else {
+									isDeleting = !isDeleting;
+									wordIndex = !isDeleting ? (wordIndex + 1) % words.length : wordIndex;
+									setTimeout(typeEffect, 1500);
+								}
+							}
+							typeEffect();
+						</script>
+
+					</div>
+
+					<div id="down_box">
+						<img src="./images/icon_down_to_down.gif" alt="down_to_down" class='down_down'>
+					</div>
+					
+					<div class="main_title">
+						<img width="60" height="60" src="https://img.icons8.com/papercut/60/best-seller--v1.png" alt="best-seller--v1"/>
+						<h1>Activites</h1>
+					</div>
+
+					<div class="main_title">
+						<div>
+							<img width="60" height="60" src="https://img.icons8.com/papercut/60/best-seller--v1.png" alt="best-seller--v1"/>
+							<h1>Best POST</h1>
+						</div>
+						<h2>Wait! Let's take a look at the most popular posts!</h2>
+					</div>
+					
+					<div class="project_box" style="align-items: start">
+						<s_rctps_popular_rep>
+							<div class="project_box_part" onClick="location.href ='[##_rctps_rep_link_##]'">
+								<div class="pic">
+									<s_rctps_rep_thumbnail>
+										<img src="[##_rctps_rep_thumbnail_##]"/>
+									</s_rctps_rep_thumbnail>
+								</div>
+								<div class="description">
+									<div class="description_inner">
+										<a href="[##_rctps_rep_category_link_##]" class="mini_box_category">[##_rctps_rep_category_##]</a>
+										<a href="[##_rctps_rep_link_##]" class="mini_box_title">[##_rctps_rep_title_##]</a>
+									</div>
+									<div class="mini_box_wAd">
+										<div class="mini_box_writer">
+											<div class="profile_pic">
+												<img src="./images/me.png" alt="It's me">
+											</div>
+											<p>Sun Hong</p>	
+										</div>
+										<p>[##_rctps_rep_simple_date_##]</p>	
+									</div>
+									<!-- <span class="cnt">[##_rctps_rep_rp_cnt_##]</span> -->
+								</div>
+								
+							</div>
+						</s_rctps_popular_rep>
+					</div>
+
+					<div class="main_title">
+						<img width="96" height="96" src="https://img.icons8.com/external-tal-revivo-shadow-tal-revivo/96/external-online-marketplace-new-items-for-sale-tab-badges-shadow-tal-revivo.png" alt="external-online-marketplace-new-items-for-sale-tab-badges-shadow-tal-revivo"/>
+						<h1><a href="/category">Recent POST</a></h1>
+					</div>
+					<p>Please take a look at the latest post that I wrote with all my heart.</p>
+					<div class="project_box" style="align-items: start">
+						<s_rctps_rep>
+							<div class="project_box_part" onClick="location.href ='[##_rctps_rep_link_##]'">
+								<div class="pic">
+									<s_rctps_rep_thumbnail>
+										<img src="[##_rctps_rep_thumbnail_##]"/>
+									</s_rctps_rep_thumbnail>
+								</div>
+								<div class="description">
+
+									<div class="description_inner">
+										<a href="[##_rctps_rep_category_link_##]" class="mini_box_category">[##_rctps_rep_category_##]</a>
+										<a href="[##_rctps_rep_link_##]" class="mini_box_title">[##_rctps_rep_title_##]</a>
+									</div>
+									<div class="mini_box_wAd">
+										<div class="mini_box_writer">
+											<div class="profile_pic">
+												<img src="./images/me.png" alt="It's me">
+											</div>
+											<p>Sun Hong</p>	
+										</div>
+										<p>[##_rctps_rep_simple_date_##]</p>	
+									</div>
+
+								</div>
+								
+							</div>
+						</s_rctps_rep>
+					</div>
+
+					<div class="main_title">
+						<img src="./images/icon_tool.png" alt="Tool">
+						<h1>Tools & Skills</h1>
+					</div>
+					<p>I can use this Tools & Skills. Also, I'm practicing something.</p>
+					<div class="project_box">
+						<div class="mini_box">
+							<h4>Language</h4>
+							<section>
+								<img src="./images/icon_lan_c.png" alt="C">
+								<img src="./images/icon_lan_cpp.png" alt="C++">
+								<img src="./images/icon_lan_python.png" alt="Python">
+								<img src="./images/icon_lan_java.png" alt="Java">
+								<img width="48" height="48" src="https://img.icons8.com/color/48/kotlin.png" alt="kotlin"/>
+								<img width="48" height="48" src="https://img.icons8.com/color/48/javascript--v1.png" alt="javascript--v1"/>
+								<img width="48" height="48" src="https://img.icons8.com/color/48/assembly.png" alt="assembly"/>
+								<img width="48" height="48" src="https://img.icons8.com/fluency/48/matlab.png" alt="matlab"/>
+							</section>
+						</div>
+						<div class="mini_box">
+							<h4>Web & App & MarkUp</h4>
+							<section>
+								<img src="./images/icon_tool_html.png" alt="Html">
+								<img src="./images/icon_tool_css.png" alt="Css">
+								<img src="./images/icon_tool_bootstrap.png" alt="Bootstrap">
+								<img src="./images/icon_tool_react.png" alt="React">
+								<img src="./images/icon_tool_node.png" alt="Node">
+								<img src="./images/icon_tool_mongodb.png" alt="MongoDB">
+								<img width="48" height="48" src="https://img.icons8.com/fluency/48/android-studio--v2.png" alt="android-studio--v2"/>
+							</section>
+						</div>
+						<div class="mini_box">
+							<h4>Hardware</h4>
+							<section>
+								<img src="./images/icon_systemverilog.png" alt="Systemverilog">
+								<img src="./images/icon_vivado.png" alt="Vivado">
+								<img src="./images/icon_vitis.png" alt="Vitis">
+								<img width="48" height="48" src="https://img.icons8.com/fluency/48/arduino.png" alt="arduino"/>
+								<img src="./images/icon_raspberrypi.png" alt="Raspberrypi">
+								<img src="./images/icon_arm.png" alt="Arm">
+								<img src="./images/logo_risc_v.png" alt="Risc-V">
+							</section>
+						</div>
+						<div class="mini_box">
+							<h4>Design</h4>
+							<section>
+								<img width="30" height="30" src="https://img.icons8.com/color/48/adobe-photoshop--v1.png" alt="adobe-photoshop--v1"/>
+								<img width="48" height="48" src="https://img.icons8.com/color/48/adobe-illustrator--v1.png" alt="adobe-illustrator--v1"/>
+								<img width="48" height="48" src="https://img.icons8.com/color/48/davinci-resolve.png" alt="davinci-resolve"/>
+								<img width="48" height="48" src="https://img.icons8.com/color/48/microsoft-visio-2019.png" alt="microsoft-visio-2019"/>
+							</section>
+						</div>
+						<div class="mini_box">
+							<h4>Editer & Documentation</h4>
+							<section>
+								<img width="48" height="48" src="https://img.icons8.com/color/48/visual-studio-code-2019.png" alt="visual-studio-code-2019"/>
+								<img width="48" height="48" src="https://img.icons8.com/external-tal-revivo-color-tal-revivo/48/external-sublime-text-a-sophisticated-text-editor-for-code-markup-language-logo-color-tal-revivo.png" alt="external-sublime-text-a-sophisticated-text-editor-for-code-markup-language-logo-color-tal-revivo"/>
+								<img width="48" height="48" src="https://img.icons8.com/fluency/48/microsoft-powerpoint-2019.png" alt="microsoft-powerpoint-2019"/>
+								<img width="48" height="48" src="https://img.icons8.com/color/48/microsoft-excel-2019--v1.png" alt="microsoft-excel-2019--v1"/>
+								<img width="48" height="48" src="https://img.icons8.com/fluency/48/microsoft-word-2019.png" alt="microsoft-word-2019"/>
+							</section>
+						</div>
+						<!-- <div class="mini_box">
+							<h4>Circuit Design</h4>
+							<img src="./images/icon_home.png" alt="Home">
+							<img src="./images/icon_home.png" alt="Home">
+							<img src="./images/icon_home.png" alt="Home">
+							<img src="./images/icon_home.png" alt="Home">
+						</div> -->
+						<div class="mini_box">
+							<h4>Ai</h4>
+							<section>
+								<img width="48" height="48" src="https://img.icons8.com/color/48/tensorflow.png" alt="tensorflow"/>
+								<img width="48" height="48" src="https://img.icons8.com/fluency/48/pytorch.png" alt="pytorch"/>
+							</section>
+						</div>
+						<div class="mini_box">
+							<h4>etc.</h4>
+							<section>
+								<img src="./images/icon_git.png" alt="Git">
+								<img width="48" height="48" src="https://img.icons8.com/external-those-icons-flat-those-icons/48/external-Linux-logos-and-brands-those-icons-flat-those-icons.png" alt="external-Linux-logos-and-brands-those-icons-flat-those-icons"/>
+							</section>
+						</div>
+					</div>
+
+					<div class="main_title">
+						<img src="./images/icon_idea.png" alt="Idea">
+						<h1>Interests</h1>
+					</div>
+					<p>I'm interested in and working on the things that come out below!</p>
+					<div class="project_box">
+						<div class="mini_box"><h4>● System Design</h4></div>
+						<div class="mini_box"><h4>● Logic Semiconductor Design</h4></div>
+						<div class="mini_box"><h4>● Web & App Design</h4></div>
+						<div class="mini_box"><h4>● AI Model Compression & Computer Vision</h4></div>
+					</div>
+
+					<div class="main_title">
+						<img src="./images/icon_music.png" alt="Music">
+						<h1>Rhythmic Hobby</h1>
+					</div>
+					<p>Come listen to my little hobby, EDM Composition.</p>
+					<div class="youtube">
+						<a href="https://www.youtube.com/@radic2884/videos">
+							<img width="100" height="100" src="https://img.icons8.com/plasticine/400/youtube-play--v2.png" alt="youtube-play--v2" style="width: 100px; height: 100px;"/>
+						</a>
+					</div>
+					<div class="project_box">
+						<iframe width="480" height="260" src="https://www.youtube.com/embed/rkLLi6Z5Y8M?si=8FdcLPTxM0xJQbF8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+						<iframe width="480" height="260" src="https://www.youtube.com/embed/DrcZs3yaPYk?si=KAZfTcd2CHxI6S3t" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+					</div>
+
+					<div class="page_footer">
+						<p>© Copyright 2023 Sun Hong</p>
+					</div>
+
+				</div>
+				<!-- ------------------------------------------------- [  End  ] -->
+
+
+				<!-- ------------------------------------------------- [ Begin ] -->
+				<!-- 글 보기 페이지 -->
+				<div id="post_page">
+					<div class="backg"></div>
+					<div class="catShelter">
+						<div class="window">
+							<img class="castle" src="./images/castle.png" alt="castle">
+							<div class="kitty">
+								<div class="ear"></div>
+							</div>
+							<div class="moon"></div>
+							<div class="star"></div>
+						</div>
+					</div>
+
+					<div class="post_wapper">
+						<s_article_rep>
+
+							<div id="head">
+
+								<div class="postpage_category_v">
+									<h4><a href="[##_article_rep_category_link_##]">[##_article_rep_category_##]</a></h4>
+								</div>
+
+								<h1><a href="[##_article_rep_link_##]">[##_article_rep_title_##]</a></h1>
+
+								<div class="mini_box_wAd">
+									<div class="mini_box_writer">
+										<img width="96" height="96" src="https://img.icons8.com/color/96/user-typing-using-typewriter.png" alt="user-typing-using-typewriter"/>
+										<p>Sun Hong</p>	
+									</div>
+									<p class="date">[##_article_rep_date_##]</p>
+								</div>
+							</div>
+	
+							<div id="body" class="entry">
+
+								<div class="article">
+									[##_article_rep_desc_##]
+								</div>
+								
+								<div class="tag_title">
+									<!-- <img width="96" height="96" src="https://img.icons8.com/windows/96/tag-window.png" alt="tag-window"/>									 -->
+									<p>Tag</p>	
+								</div>
+
+								<div class="tag_label">
+									<s_tag_label>
+										<span>[##_tag_label_rep_##]</span>
+									</s_tag_label>
+								</div>
+
+								<!-- <div class="comment_title">
+									<img width="100" height="100" src="https://img.icons8.com/ios/100/comments--v1.png" alt="comments--v1"/>
+									<p>Comment</p>	
+								</div> -->
+
+								<div class="comment_box">
+									<s_rp>
+										[##_comment_group_##]
+									</s_rp>
+								</div>
+
+							</div>
+
+						</s_article_rep>
+					</div>
+					<script>
+						document.addEventListener('DOMContentLoaded', function () {
+							const tag_label = document.querySelectorAll('#post_page .tag_label');
+							
+							tag_label.forEach(function (box) {
+								var content = box.innerHTML;
+								box.innerHTML = content.replace(/,/g, '');
+							});
+						});
+
+						const tag_backgroundColors = ["#fadec9", "#f5e0e9", "#f1f0ef", "#fdecc8", "#ffe2dd", "#ffe2dd", "#dbeddb", "#d3e5ef", "#e8deee"];
+
+						const tag_label_a = document.querySelectorAll('#post_page .tag_label a');
+						tag_label_a.forEach((a) => {
+							var ran_color = Math.floor(Math.random() * tag_backgroundColors.length);
+							a.style.backgroundColor = tag_backgroundColors[ran_color];
+							tag_backgroundColors.splice(ran_color, 1);
+						});
+
+						const tag_title = document.querySelector('#post_page .tag_title');
+						if(tag_label_a.length === 0) {
+							tag_title.style.display = "none";
+						}
+					</script>
+					<script>
+						const articleP_back = document.querySelectorAll("#post_page #body .article p span");
+
+						articleP_back.forEach((back) => {
+							var backgroundColor = back.style.backgroundColor;
+							if(!(backgroundColor === "")) {
+								back.style.background = `linear-gradient(to top, ${rgbToRGBA(backgroundColor, 0.4)} 50%, transparent 50%)`;
+								back.style.borderRadius = "0 0 0 10px";
+							}
+						});
+
+						function rgbToRGBA(rgb, alpha) {
+							let match = rgb.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
+							let r = parseInt(match[1]);
+							let g = parseInt(match[2]);
+							let b = parseInt(match[3]);
+							return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+						}
+					</script>
+					
+
+					<div class="table_contents">
+						<div class="table_contents_btn" onclick="table_close_click()"><p>C</p></div>
+						<p class="table_title">Contents</p>
+						<div class="table_content_inner"></div>
+					</div>
+					<script>
+						const table_contents = document.querySelector('#post_page .table_contents');
+						const table_contents_btn = document.querySelector('#post_page .table_contents_btn');
+						const table_contents_btn_p = document.querySelector('#post_page .table_contents_btn p');
+
+						const original_table_contents_btn = window.getComputedStyle(table_contents_btn);
+
+						function table_close_click(){
+							if (table_contents.style.right === '' || table_contents.style.right === '0px') {
+								close_contents_btn();
+							} else {
+								open_contents_btn();
+							}
+						}
+
+						const mediaQuery1300 = window.matchMedia('(max-width: 1300px)');
+						mediaQuery1300.addListener(() =>{
+							if (mediaQuery1300.matches){
+								close_contents_btn();
+							} else {
+								open_contents_btn();
+							}
+						});
+
+						function close_contents_btn(){
+							table_contents.style.right = '-300px'
+							table_contents_btn.style.right = '0px'
+							table_contents_btn.style.marginRight = '0px'
+							table_contents_btn.style.borderRadius = '10px 0 0 10px'
+							table_contents_btn.style.width = '75px'
+							table_contents_btn.style.height = '30px'
+							table_contents_btn_p.innerText = 'Contents'
+						}
+						function open_contents_btn(){
+							table_contents.style.right = '0px'
+							table_contents_btn.style = original_table_contents_btn;
+							table_contents_btn_p.innerText = 'C'
+						}
+
+					</script>
+					<script>
+						document.addEventListener('DOMContentLoaded', function() {
+							const articleContainer = document.querySelector('#post_page .tt_article_useless_p_margin');
+							const headings = articleContainer.querySelectorAll('h2, h3');
+							const table_content_inner = document.querySelector('#post_page .table_content_inner');
+
+							if (headings.length > 0) {
+								table_contents.style.display = 'flex';
+
+								const tocList = document.createElement('ul');
+
+								headings.forEach((heading) => {
+									const listItem = document.createElement('li');
+									listItem.textContent = heading.textContent;
+									listItem.classList.add('toc-item', `toc-level-${heading.tagName[1]}`);
+
+									listItem.addEventListener('click', () => {
+										heading.scrollIntoView({ behavior: 'smooth' });
+									});
+
+									tocList.appendChild(listItem);
+								});
+
+								table_content_inner.appendChild(tocList);
+							} else {}
+						});
+
+						// document.addEventListener('scroll', function () {
+						// 	const articleContainer = document.querySelector('#post_page .tt_article_useless_p_margin');
+						// 	const headings = articleContainer.querySelectorAll('h2, h3');
+
+						// 	const lists = document.querySelectorAll('#post_page .table_content_inner ul li');
+						// 	const headingArray = Array.from(lists);
+
+						// 	if (headingArray.length > 0) {
+						// 		const scrollPosition = window.scrollY;
+
+						// 		headingArray.forEach((heading, index) => {
+						// 			const elementTop = headingArray[index].offsetTop + 700;
+						// 			const elementBottom = headingArray[index + 1] ? headingArray[index + 1].offsetTop + 700 : 900000;
+
+						// 			console.log(index, elementTop, elementBottom);
+						// 			if (scrollPosition >= elementTop && scrollPosition <= elementBottom){
+						// 				lists[index].style.textDecoration = 'underline';
+						// 			} else {
+						// 				lists[index].style.textDecoration = 'none';
+						// 			}
+						// 		});
+						// 	}
+						// });
+					</script>
+
+					<!-- 이미지 모달 설정 -->
+					<div id="postModal" class="modal">
+						<span class="close" onclick="closeModal()">&times;</span>
+						<img src="your-image.jpg" alt="Full Image" class="modal-content">
+					</div>
+					<script>
+						const articleImages = document.querySelectorAll('#post_page .article img');
+
+						articleImages.forEach((img) => {
+							img.addEventListener('click', () => {
+								document.querySelector('#postModal img').src = img.src;
+								document.querySelector('#postModal').style.display = 'block';
+								console.log(img.src);
+								console.log('이미지가 클릭되었습니다.');
+							});
+						});
+  
+						closeModal = () => {
+						  	document.querySelector('#postModal').style.display = 'none';
+						}
+					  
+						// 모달 외부 클릭 시 닫기
+						window.onclick = (event) => {
+							const postModal = document.querySelector('#postModal');
+							if (event.target == postModal) {
+								closeModal();
+							}
+						};
+					</script>
+
+
+
+
+					<div class="page_footer">
+						<p>© Copyright 2023 Sun Hong</p>
+					</div>
+				</div>
+				<!-- ------------------------------------------------- [  End  ] -->
+
+
+
+				<!-- ------------------------------------------------- [ Begin ] -->
+				<!-- 카테고리 페이지 -->
+				<div id="category_page">
+					<div class="backg"></div>
+					<div class="wave wave_1"></div>
+					<div class="wave wave_2"></div>
+					<div class="wave wave_3"></div>
+					<div class="wave wave_4"></div>
+					<img class="island" src="./images/island.png" alt="island">
+					
+					<div class="category_body">
+						<s_list>
+							<div id="head">
+								<h5>&lt;/category&gt;</h5>
+								<h2>[##_list_conform_##]</h2>
+							</div>
+	
+							<div id="body_box">
+								<s_list_rep>
+	
+									<div class="post_box" onClick="location.href ='[##_list_rep_link_##]'">
+	
+										<div class="pic">
+											<s_list_rep_thumbnail>
+												<img src="[##_list_rep_thumbnail_##]"/>
+											</s_list_rep_thumbnail>
+										</div>
+	
+										<div class="description">
+	
+											<div class="description_inner">
+												<a href="[##_list_rep_link_##]" class="body_box_title">[##_list_rep_title_##]</a>
+												<a href="[##_list_rep_link_##]"><p class="summary">[##_list_rep_summary_##]</p></a>
+											</div>
+	
+											<div class="comments_cnt">
+												<img width="100" height="100" src="https://img.icons8.com/ios/100/speech-bubble--v1.png" alt="speech-bubble--v1"/>
+												<p class="cnt">[##_list_rep_rp_cnt_##]</p>
+											</div>
+	
+											<div class="mini_box_wAd">
+												<div class="mini_box_writer">
+													<div class="profile_pic">
+														<img src="./images/me.png" alt="It's me">
+													</div>
+													<p>Sun Hong</p>	
+												</div>
+												<p>[##_list_rep_date_year_##].[##_list_rep_date_month_##].[##_list_rep_date_day_##]</p>
+											</div>
+	
+										</div>
+									</div>
+								</s_list_rep>
+							</div>
+							
+						</s_list>
+					</div>
+					<script>
+						const cat_list_title = document.querySelector("#category_page #head h2");
+						
+						let firstSlashIndex = cat_list_title.textContent.indexOf('/');
+
+						if(firstSlashIndex !== -1) {
+							cat_list_title.textContent = cat_list_title.textContent.substring(firstSlashIndex + 1);
+						}
+					</script>
+					<script>
+						const comments_cnt = document.querySelectorAll("#body_box .comments_cnt .cnt");
+
+						for (const comment of comments_cnt) {
+							if(comment.textContent === "") {
+							comment.textContent = "댓글이 없어요";
+							} else {
+								comment.textContent = comment.textContent.replace(/\(([^)]+)\)/g, '$1'); // 괄호 제거
+								comment.textContent = `( ${comment.textContent} )`;
+							}
+						}
+					</script>
+
+					<s_paging>
+						<div class="paging">
+						  <a [##_prev_page_##] class="prev [##_prev_page_##]">PREV</a>
+						  <span class="numbox">
+							<s_paging_rep>
+							  <a [##_paging_rep_link_##] class="num">[##_paging_rep_link_num_##]</a>
+							</s_paging_rep>
+						  </span>
+						  <a [##_next_page_##] class="next [##_next_page_##]">NEXT</a>
+						</div>
+					</s_paging>
+
+					<div class="page_footer">
+						<p>© Copyright 2023 Sun Hong</p>
+					</div>
+				</div>
+				<!-- ------------------------------------------------- [  End  ] -->
+
+
+				<!-- ------------------------------------------------- [ Begin ] -->
+				<!-- 방명록 페이지 -->
+				<div id="guest_page">
+					<div class="dragon">
+						<img src="./images/logo_dragonB.png" alt="dragon">
+						<section>
+							<span>Danger!</span>
+							<h1>이 친구는 사실 용이에요.</h1>
+							<h2>용에게 인사를 해주세요.</h2>
+							<img width="96" height="96" src="https://img.icons8.com/color/96/man-raising-hand-icon.png" alt="man-raising-hand-icon"/>
+						</section>
+					</div>
+					
+					<div class="body">
+						<s_guest>
+							[##_guestbook_group_##]
+						</s_guest>
+					</div>
+
+				</div>
+				<!-- ------------------------------------------------- [  End  ] -->
+
+
+				<!-- ------------------------------------------------- [ Begin ] -->
+				<!-- 테그 페이지 -->
+				<div id="tag_page">
+					<div class="backg"></div>
+
+					<div class="heshtegShelter">
+						<img width="100" height="100" src="https://img.icons8.com/stickers/100/hashtag.png" alt="hashtag"/>
+					</div>
+
+					<div class="tag_body">
+						<s_list>
+
+							<div id="head">
+								<span>[##_list_conform_##]</span>
+							</div>
+
+							<div id="body_box">
+								<s_list_rep>
+	
+									<div class="post_box" onClick="location.href ='[##_list_rep_link_##]'">
+	
+										<div class="pic">
+											<s_list_rep_thumbnail>
+												<img src="[##_list_rep_thumbnail_##]"/>
+											</s_list_rep_thumbnail>
+										</div>
+	
+										<div class="description">
+	
+											<div class="description_inner">
+												<a href="[##_list_rep_link_##]" class="body_box_title">[##_list_rep_title_##]</a>
+												<a href="[##_list_rep_link_##]"><p class="summary">[##_list_rep_summary_##]</p></a>
+											</div>
+	
+											<div class="comments_cnt">
+												<img width="100" height="100" src="https://img.icons8.com/ios/100/speech-bubble--v1.png" alt="speech-bubble--v1"/>
+												<p class="cnt">[##_list_rep_rp_cnt_##]</p>
+											</div>
+	
+											<div class="mini_box_wAd">
+												<div class="mini_box_writer">
+													<div class="profile_pic">
+														<img src="./images/me.png" alt="It's me">
+													</div>
+													<p>Sun Hong</p>	
+												</div>
+												<p>[##_list_rep_date_year_##].[##_list_rep_date_month_##].[##_list_rep_date_day_##]</p>
+											</div>
+	
+										</div>
+									</div>
+								</s_list_rep>
+							</div>
+							
+						</s_list>
+					</div>
+					<script>
+						const tag_comments_cnt = document.querySelectorAll("#tag_box .comments_cnt .cnt");
+
+						for (const comment of tag_comments_cnt) {
+							if(comment.textContent === "") {
+							comment.textContent = "댓글이 없어요";
+							} else {
+								comment.textContent = comment.textContent.replace(/\(([^)]+)\)/g, '$1'); // 괄호 제거
+								comment.textContent = `( ${comment.textContent} )`;
+							}
+						}
+					</script>
+
+					<s_paging>
+						<div class="paging">
+						  <a [##_prev_page_##] class="prev [##_prev_page_##]">PREV</a>
+						  <span class="numbox">
+							<s_paging_rep>
+							  <a [##_paging_rep_link_##] class="num">[##_paging_rep_link_num_##]</a>
+							</s_paging_rep>
+						  </span>
+						  <a [##_next_page_##] class="next [##_next_page_##]">NEXT</a>
+						</div>
+					</s_paging>
+
+					<div class="page_footer">
+						<p>© Copyright 2023 Sun Hong</p>
+					</div>
+				</div>
+				<!-- ------------------------------------------------- [  End  ] -->
+
+
+				<!-- ------------------------------------------------- [ Begin ] -->
+				<!-- 검색 페이지 -->
+				<div id="search_page">
+
+					<div class="backg"></div>
+
+					<div class="moonShelter">
+						<div class="moon"></div>
+						<div class="satellite"></div>
+						<img src="./images/fox.png" alt="fox">
+					</div>
+
+					<div class="search_body">
+						<s_list>
+
+							<div id="head">
+								<h2>Search Results for</h2>
+								<span>[##_list_conform_##]</span>
+							</div>
+
+							<div id="body_box">
+								<s_list_rep>
+	
+									<div class="post_box" onClick="location.href ='[##_list_rep_link_##]'">
+	
+										<div class="pic">
+											<s_list_rep_thumbnail>
+												<img src="[##_list_rep_thumbnail_##]"/>
+											</s_list_rep_thumbnail>
+										</div>
+	
+										<div class="description">
+	
+											<div class="description_inner">
+												<a href="[##_list_rep_link_##]" class="body_box_title">[##_list_rep_title_##]</a>
+												<a href="[##_list_rep_link_##]"><p class="summary">[##_list_rep_summary_##]</p></a>
+											</div>
+	
+											<div class="comments_cnt">
+												<img width="100" height="100" src="https://img.icons8.com/ios/100/speech-bubble--v1.png" alt="speech-bubble--v1"/>
+												<p class="cnt">[##_list_rep_rp_cnt_##]</p>
+											</div>
+	
+											<div class="mini_box_wAd">
+												<div class="mini_box_writer">
+													<div class="profile_pic">
+														<img src="./images/me.png" alt="It's me">
+													</div>
+													<p>Sun Hong</p>	
+												</div>
+												<p>[##_list_rep_date_year_##].[##_list_rep_date_month_##].[##_list_rep_date_day_##]</p>
+											</div>
+	
+										</div>
+									</div>
+								</s_list_rep>
+							</div>
+							
+						</s_list>
+					</div>
+					<script>
+						const search_comments_cnt = document.querySelectorAll("#body_box .comments_cnt .cnt");
+
+						for (const comment of search_comments_cnt) {
+							if(comment.textContent === "") {
+							comment.textContent = "댓글이 없어요";
+							} else {
+								comment.textContent = comment.textContent.replace(/\(([^)]+)\)/g, '$1'); // 괄호 제거
+								comment.textContent = `( ${comment.textContent} )`;
+							}
+						}
+					</script>
+
+					<s_paging>
+						<div class="paging">
+						  <a [##_prev_page_##] class="prev [##_prev_page_##]">PREV</a>
+						  <span class="numbox">
+							<s_paging_rep>
+							  <a [##_paging_rep_link_##] class="num">[##_paging_rep_link_num_##]</a>
+							</s_paging_rep>
+						  </span>
+						  <a [##_next_page_##] class="next [##_next_page_##]">NEXT</a>
+						</div>
+					</s_paging>
+
+					<div class="page_footer">
+						<p>© Copyright 2023 Sun Hong</p>
+					</div>
+
+
+				</div>
+				<!-- ------------------------------------------------- [  End  ] -->
+
+
+			</div> <!-- content close -->
+
+			<!-- ************************************************************************************************ [  End  ] -->
+
+		</div>  <!-- /wrapper -->
+	</s_t3>
+
+
+	<!-- 부트스트랩 -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+</body>
+
+
+</html>
